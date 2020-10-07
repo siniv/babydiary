@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+	<title>Lisää merkintä</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+	<div class="container">
+		<h1>Lisää merkintä</h1>
+		<form th:object="${entry}" th:action="@{save}" action="#" method="post">
+			<div class="form-group">
+		 		<label for="entrydate">Päivämäärä</label>
+                <div class="input-group date">
+                	<input type="date" class="form-control" id="entrydate" autocomplete="on" th:field="*{entrydate}"/>
+                </div>
+         	</div>
+            <div class="form-group">
+		  		<label for="nightnursing">Yöimetys</label>
+		  		<div class="input-group">
+					<input type="text" class="form-control" id="nightnursing" th:field="*{nightnursing}" />
+				</div>
+			</div>
+			<div class="form-group">
+		  		<label for="daynursing">Päiväimetys</label>
+		  		<div class="input-group">
+					<input type="text" class="form-control" id="daynursing" th:field="*{daynursing}" />
+				</div>
+			</div>		
+			<div class="form-group">
+				<label for="poopdiaper">Kakkavaippa</label>
+				<div class="input-group">
+					<input type="text" class="form-control" id="poopdiaper" th:field="*{poopdiaper}" />
+				</div>
+			</div>		
+			<div class="form-group">
+				<label for="peediaper">Pissavaippa</label>
+				<div class="input-group">
+					<input type="text" class="form-control" id="peediaper" th:field="*{peediaper}" />
+				</div>
+			</div>		
+			<div class="form-group">
+				<label for="other">Muuta</label>
+				<div class="input-group">
+					<textarea type="text" class="form-control" id="other" th:field="*{other}"></textarea>
+				</div>	
+			</div>
+			<div class="form-group">
+				<label for="catlist">Kategoria</label>
+				<select id="catlist" th:field="*{category}" class="form-control">
+       				<option th:each="category: ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+    			</select>
+			</div>
+			<input type="submit" value="Tallenna"></input>
+		</form>
+	</div>
+</body>
+</html>
