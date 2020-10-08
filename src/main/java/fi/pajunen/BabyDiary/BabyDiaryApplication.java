@@ -28,10 +28,13 @@ public class BabyDiaryApplication {
 			crepository.save(new Category("Uusi taito"));
 			crepository.save(new Category("Huoli"));
 			
-			erepository.save(new Entry("2020-10-05", 3, 5, 6, 8, "perus päivä", crepository.findByName("Päivittäiset").get(0)));
-			//erepository.save(new Entry("JokuToinen", "ToinenKirjoittaja", 2019, "ISBN1235", 90, crepository.findByName("Horror").get(0)));
+			erepository.save(new Entry("2020-10-05", 3, 5, 6, 8, "Perus päivä", crepository.findByName("Päivittäiset").get(0)));
+			erepository.save(new Entry("2020-10-06", 2, 6, 3, 5, "5 tunnin yöunet", crepository.findByName("Päivittäiset").get(0)));
+			erepository.save(new Entry("2020-10-06", 0, 0, 0, 0, "Kääntyi ensi kertaa vatsalleen", crepository.findByName("Uusi taito").get(0)));
+			erepository.save(new Entry("2020-10-07", 3, 7, 2, 6, "Nukkui 3 päikkärit", crepository.findByName("Päivittäiset").get(0)));
+			erepository.save(new Entry("2020-10-07", 0, 0, 0, 0, "Itkuinen, vähän lämpöä", crepository.findByName("Huoli").get(0)));
 			
-			// Create users: admin/admin user/user
+			// Luodaan käyttäjät: admin/admin user/user, äiti/äiti
 			User user1 = new User("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER");
 			User user2 = new User("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN");
 			User user3 = new User("äiti", "$2a$10$HuVnU/8mQVLQrJZzve8Ege5b8SeM7Oh9banozmyeCI.bgnten1q.u", "ADMIN");
