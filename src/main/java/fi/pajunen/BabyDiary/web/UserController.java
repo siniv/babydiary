@@ -23,7 +23,7 @@ public class UserController {
     private UserRepository repository; 
 	
     @RequestMapping(value = "signup")
-    public String addStudent(Model model){
+    public String addUser(Model model){
     	model.addAttribute("signupform", new SignupForm());
         return "signup";
     }	
@@ -38,8 +38,8 @@ public class UserController {
      */
     @RequestMapping(value = "saveuser", method = RequestMethod.POST)
     public String save(@Valid @ModelAttribute("signupform") SignupForm signupForm, BindingResult bindingResult) {
-    	if (!bindingResult.hasErrors()) { // validation errors
-    		if (signupForm.getPassword().equals(signupForm.getPasswordCheck())) { // check password match		
+    	if (!bindingResult.hasErrors()) { 
+    		if (signupForm.getPassword().equals(signupForm.getPasswordCheck())) { // Täsmäävätkö salasanat		
 	    		String pwd = signupForm.getPassword();
 		    	BCryptPasswordEncoder bc = new BCryptPasswordEncoder();
 		    	String hashPwd = bc.encode(pwd);
@@ -48,16 +48,16 @@ public class UserController {
 		    	newUser.setPasswordHash(hashPwd);
 		    	newUser.setUsername(signupForm.getUsername());
 		    	newUser.setRole("USER");
-		    	if (repository.findByUsername(signupForm.getUsername()) == null) { // Check if user exists
+		    	if (repository.findByUsername(signupForm.getUsername()) == null) { // Löytyykö käyttäjä jo tietokannasta
 		    		repository.save(newUser);
 		    	}
 		    	else {
-	    			bindingResult.rejectValue("username", "err.username", "Username already exists");    	
+	    			bindingResult.rejectValue("username", "err.username", "Käyttäjätunnus on jo olemassa");    	
 	    			return "signup";		    		
 		    	}
     		}
     		else {
-    			bindingResult.rejectValue("passwordCheck", "err.passCheck", "Passwords does not match");    	
+    			bindingResult.rejectValue("passwordCheck", "err.passCheck", "Salasanat eivät täsmää");    	
     			return "signup";
     		}
     	}

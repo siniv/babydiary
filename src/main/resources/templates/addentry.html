@@ -13,6 +13,7 @@
 		 		<label for="entrydate">Päivämäärä</label>
                 <div class="input-group date">
                 	<input type="date" class="form-control" id="entrydate" autocomplete="on" th:field="*{entrydate}"/>
+                	<p th:if="${#fields.hasErrors('entrydate')}" th:errors="*{entrydate}">Muista täyttää päivämäärä</p>
                 </div>
          	</div>
             <div class="form-group">
