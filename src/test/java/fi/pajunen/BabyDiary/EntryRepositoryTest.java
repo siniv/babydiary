@@ -1,4 +1,4 @@
-package fi.pajunen.BabyDiary;
+/*package fi.pajunen.BabyDiary;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -36,4 +36,4 @@ public class EntryRepositoryTest {
     	assertThat(entry.getId()).isNotNull();
     }    
 
-}
+}*/
