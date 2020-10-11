@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import fi.pajunen.BabyDiary.domain.CategoryRepository;
 import fi.pajunen.BabyDiary.domain.Entry;
 import fi.pajunen.BabyDiary.domain.EntryRepository;
-import s2020.Bookstore.domain.Book;
 
 @Controller
 public class EntryController {
